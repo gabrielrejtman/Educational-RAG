@@ -103,7 +103,7 @@ Após a conclusão, a base será salva na pasta **`faiss_index`**, e as execuç�
 | **`router_agent.py`** | Classifica a intenção do usuário (`pesquisa` ou `gerar_documento`). | `ChatGroq`, `ChatPromptTemplate` |
 | **`scraper.py`** | Cria e carrega o *Vector Store* (base de conhecimento). | `WebBaseLoader`, `OllamaEmbeddings`, `FAISS`, `RecursiveCharacterTextSplitter` |
 | **`search_agent.py`** | Agente de RAG (Busca e Geração de Resposta). | `ChatGroq`, `create_retrieval_chain` |
-| **`document_generator.py`** | Agente de Redação (Solicita info e gera o texto do documento). | `ChatGroq`, `ChatPromptTemplate` |
+| **`file_agent.py`** | Agente de Redação (Solicita info e gera o texto do documento). | `ChatGroq`, `ChatPromptTemplate` |
 | **`pdf_creator.py`** | Converte o texto gerado pelo LLM em um arquivo PDF. | `fpdf2` |
 
 -----
