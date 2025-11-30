@@ -23,6 +23,14 @@ if "document_generation_state" not in st.session_state:
         "collected_info": ""
     }
 
+if "email_state" not in st.session_state:
+    st.session_state.email_state = {
+        "active": False,
+        "pending_pdf": None,
+        "destination_email": None
+    }
+
+
 for msg in st.session_state.messages:
     if msg["role"] == "user":
         st.chat_message("user").write(msg["content"])
@@ -75,19 +83,54 @@ if user_input:
                     "content": document_content
                 }
                 st.session_state.messages.append({"role": "assistant", "content": llm_response})
-                st.rerun() 
-
+                
+                # Resetar documento_generation_state AQUI
                 st.session_state.document_generation_state = {
                     "active": False,
                     "document_type": None,
                     "collected_info": ""
                 }
+                
+                st.rerun()  # Apenas um rerun
 
             except Exception as e:
                 answer = f"Erro ao gerar o documento: {e}"
                 st.session_state.messages.append({"role": "assistant", "content": answer})
                 st.error(answer)
             
+        st.stop()  # Parar aqui após gerar documento
+
+    if st.session_state.email_state["active"]:
+        email_state = st.session_state.email_state
+
+    # Se ainda não foi informado um email:
+        if email_state["destination_email"] is None:
+            if "@" not in user_input:
+                response = "Por favor, informe um endereço de email válido."
+                st.session_state.messages.append({"role": "assistant", "content": response})
+                st.chat_message("assistant").write(response)
+            else:
+                email_state["destination_email"] = user_input
+                # Pegamos o último PDF gerado
+                last_msg = next(
+                    (m for m in reversed(st.session_state.messages) if isinstance(m["content"], dict) and m["content"].get("type") == "pdf_link"),
+                    None
+                )
+                if not last_msg:
+                    response = "Nenhum documento foi gerado ainda."
+                    st.chat_message("assistant").write(response)
+                else:
+                    pdf_path = last_msg["content"]["path"]
+                    from tools.send_mail import send_email_with_pdf
+                    ok, msg = send_email_with_pdf(user_input, pdf_path)
+
+                    st.session_state.email_state = {"active": False, "pending_pdf": None, "destination_email": None}
+
+                    st.session_state.messages.append({"role": "assistant", "content": msg})
+                    st.chat_message("assistant").write(msg)
+
+        st.stop()
+
     else:
         with st.spinner("Analisando sua intenção..."):
             intention = router_chain.invoke({"input": user_input})
@@ -130,6 +173,12 @@ if user_input:
                         answer = f"Erro ao processar sua pergunta: {e}"
                         st.error(answer)
 
+            elif intention.strip().lower() == "enviar_email":
+                from agents.email_agent import email_chain
+                st.session_state.email_state["active"] = True
+                response = email_chain.invoke({"input": user_input})
+                st.session_state.messages.append({"role": "assistant", "content": response})
+                st.chat_message("assistant").write(response)
             else:
                 with st.spinner("Buscando resposta (intenção não clara)..."):
                     try:

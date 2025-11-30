@@ -1,0 +1,28 @@
+test_case,expected_function,predicted,match
+"Crie um contrato de prestação de serviços detalhado para uma empresa de consultoria de dados, incluindo cláusulas de SLA, confidencialidade e rescisão.",gerar_documento,gerar_documento,True
+"Gere uma petição inicial com foco em dano moral por falha na prestação de serviço de telecomunicações, incluindo jurisprudências recentes.",gerar_documento,gerar_documento,True
+Preciso de um relatório técnico completo sobre os riscos de segurança cibernética em pequenas empresas.,gerar_documento,pesquisa,False
+Monte um modelo de documento oficial solicitando acesso a informações públicas conforme a Lei de Acesso à Informação.,gerar_documento,gerar_documento,True
+Crie uma política interna de segurança de dados para uma startup de saúde digital.,gerar_documento,gerar_documento,True
+Pesquise as decisões judiciais mais recentes relacionadas a responsabilidade civil médica no STJ.,pesquisa,pesquisa,True
+Busque os principais artigos científicos publicados nos últimos 5 anos sobre redes neurais esparsas.,pesquisa,pesquisa,True
+Encontre informações atualizadas sobre regulamentações brasileiras referentes ao uso de IA no setor financeiro.,pesquisa,pesquisa,True
+Pesquise os efeitos econômicos da adoção de blockchain em cadeias de suprimento globais.,pesquisa,pesquisa,True
+Levante estatísticas recentes sobre fraudes bancárias digitais no Brasil e suas principais causas.,pesquisa,pesquisa,True
+Redija um modelo de contrato de confidencialidade bilateral com foco em projetos de software.,gerar_documento,gerar_documento,True
+Monte um parecer jurídico explicando os limites legais do uso de biometria facial em ambientes corporativos.,gerar_documento,gerar_documento,True
+Quero uma minuta de acordo extrajudicial envolvendo dívida trabalhista com parcelamento.,gerar_documento,gerar_documento,True
+Pesquise as tendências atuais no uso de modelos generativos na indústria farmacêutica.,pesquisa,pesquisa,True
+Liste estudos acadêmicos recentes sobre generalização em modelos transformer de grande porte.,pesquisa,pesquisa,True
+Elabore um documento de políticas de compliance para uma fintech que opera crédito pessoal.,gerar_documento,gerar_documento,True
+Crie uma carta formal solicitando análise de contestação de cobrança indevida.,gerar_documento,gerar_documento,True
+Faça uma busca sobre as normas ISO mais relevantes para gestão de segurança da informação.,pesquisa,pesquisa,True
+Pesquise o impacto regulatório da nova lei de proteção de dados da União Europeia sobre empresas estrangeiras.,pesquisa,pesquisa,True
+Monte um documento de requisitos técnicos para desenvolvimento de um sistema de OCR em larga escala.,gerar_documento,gerar_documento,True
+Elabore uma petição inicial bem fundamentada sobre responsabilidade civil,gerar_documento,gerar_documento,True
+"poderia preparar um documento formal para ingresso com mandado de segurança?,gerar_documento
+Elabore um relatório técnico detalhado sobre vulnerabilidades comuns em APIs expostas publicamente.""",gerar_documento,"gerar_documento
+pesquisa",False
+Preciso de um relatório técnico completo avaliando os riscos de engenharia social em equipes remotas.,gerar_documento,pesquisa,False
+Produza um relatório técnico aprofundado sobre boas práticas de hardening para servidores Linux corporativos.,gerar_documento,gerar_documento,True
+Quero um relatório técnico descrevendo os principais vetores de ataque utilizados em fraudes bancárias digitais.,gerar_documento,pesquisa,False
